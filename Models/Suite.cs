@@ -7,7 +7,7 @@ namespace console_hotel_system.Models
 {
     public class Suite
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Type { get; set; }
         public int Capacity { get; set; }
         public decimal Price { get; set; }
@@ -15,7 +15,7 @@ namespace console_hotel_system.Models
 
         public Suite
         (
-            int id,
+            string id,
             string type,
             int capacity,
             decimal price,

@@ -11,11 +11,11 @@ namespace console_hotel_system.Models
 
         public BasicSuite
         (
-            int id,
+            string id,
             int capacity,
             decimal price,
             bool hasBalcony
-        ) : base(id, "Basic", capacity, price, "Suite prática com o essencial")
+        ) : base(id, "Basic", capacity, price, "Suíte prática com o essencial")
         {
             HasBalcony = hasBalcony;
         }

@@ -7,7 +7,7 @@ namespace console_hotel_system.Models
 {
     public class Guest
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string FullName { get; set; }
         public int Age { get; set; }
         public string Birthday { get; set; }
@@ -18,7 +18,7 @@ namespace console_hotel_system.Models
         public string IdDocument { get; set; }
 
         public Guest(
-            int id,
+            string id,
             string fullName,
             int age,
             string birthday,

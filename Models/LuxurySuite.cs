@@ -12,7 +12,7 @@ namespace console_hotel_system.Models
 
         public LuxurySuite
         (
-            int id,
+            string id,
             int capacity,
             decimal price,
             bool hasJacuzzi,
