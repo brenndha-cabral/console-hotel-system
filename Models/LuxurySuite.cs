@@ -7,20 +7,19 @@ namespace console_hotel_system.Models
 {
     public class LuxurySuite : Suite
     {
-    public bool HasJacuzzi { get; set; }
-    public bool IncludesBreakfast { get; set; }
+    public decimal ValueJacuzziDay { get; set; }
+    public decimal ValueBreakfastDay { get; set; }
+
 
         public LuxurySuite
         (
             string id,
-            int capacity,
-            decimal price,
-            bool hasJacuzzi,
-            bool includesBreakfast
-        ) : base(id, "Luxury", capacity, price, "Suíte de luxo com comodidades premium")
+            decimal valueJacuzziDay = 50M,
+            decimal valueBreakfastDay = 30M
+        ) : base(id, "Luxury", 5, 250M, "Suíte de luxo com comodidades premium")
         {
-            HasJacuzzi = hasJacuzzi;
-            IncludesBreakfast = includesBreakfast;
+            ValueJacuzziDay = valueJacuzziDay;
+            ValueBreakfastDay = valueBreakfastDay;
         }
     }
 }

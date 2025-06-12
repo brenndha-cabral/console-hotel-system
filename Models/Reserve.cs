@@ -63,16 +63,45 @@ namespace console_hotel_system.Models
             return Guests.Count;
         }
 
-        public decimal CalculateDailyValue(int reservedDays, Suite suite)
+        public decimal CalculatePrice(int reservedDays, Suite suite)
         {
-            int value = reservedDays*Convert.ToInt32(suite.Price);
+            decimal value = 0;
+            LuxurySuite? luxurySuite = suite as LuxurySuite;
+            BasicSuite? basicSuite = suite as BasicSuite;
 
-            if (reservedDays < 10)
+            switch (suite.Type)
             {
-                return value;
+                case "Luxury":
+                    bool inputHasJacuzzi = Convert.ToBoolean(Console.ReadLine());
+                    bool inputIncludesBreakfast = Convert.ToBoolean(Console.ReadLine());
+
+                    if (inputHasJacuzzi)
+                    {
+                        value += reservedDays * Convert.ToInt32(luxurySuite?.ValueJacuzziDay);
+                    }
+
+                    if (inputIncludesBreakfast)
+                    {
+                        value += reservedDays * Convert.ToInt32(luxurySuite?.ValueBreakfastDay);
+                    }
+
+                    value += reservedDays * Convert.ToInt32(luxurySuite?.Price);
+                    break;
+
+                case "Basic":
+                    value += reservedDays*Convert.ToInt32(basicSuite?.Price);
+                    break;
+                    
+                default:
+                    throw new Exception("Tipo de suite inválido!");
             }
 
-            return value * (1 - (10 / 100));
+            if (reservedDays >= 10)
+            {
+                return value *= 0.9M; //calcula o valor de 10% de desconto por dentro
+            }
+
+            return value;
         }
     
     }

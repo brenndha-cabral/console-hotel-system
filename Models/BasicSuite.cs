@@ -7,17 +7,11 @@ namespace console_hotel_system.Models
 {
     public class BasicSuite : Suite
     {
-        public bool HasBalcony { get; set; }
-
-        public BasicSuite
+         public BasicSuite
         (
-            string id,
-            int capacity,
-            decimal price,
-            bool hasBalcony
-        ) : base(id, "Basic", capacity, price, "Suíte prática com o essencial")
+            string id
+        ) : base(id, "Basic", 3, 125M, "Suíte prática com o essencial")
         {
-            HasBalcony = hasBalcony;
         }
     }
 }
