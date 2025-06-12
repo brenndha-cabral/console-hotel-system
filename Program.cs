@@ -36,8 +36,9 @@ try
 {
     while (hasRunProgram)
     {
-        Console.WriteLine("⚠️  Bem vindo ao nosso restaurante! ⚠️");
-        Console.WriteLine("Qual tipo de Suite você deseja? \nBasic \nLuxury");
+        Console.WriteLine("\n🏨 Bem-vindo ao Chuckle Chateau! 🏨\n");
+        Console.WriteLine("Escolha uma opção de suíte:\n\n🛏️ Basic\n🛏️ Luxury\n❌ Sair\n");
+
 
         Suite suite = null!;
 
@@ -54,7 +55,7 @@ try
                 break;
 
             case "Sair":
-                Console.WriteLine("Nosso hotel agradece, volte sempre!");
+                Console.WriteLine("🏨 Chuckle Chateau agradece seu contato! Volte sempre! 🏨");
                 hasRunProgram = false;
                 break;
 
@@ -62,7 +63,7 @@ try
                 break;
         }
 
-        Console.WriteLine("Quantos dias serão reservados?");
+        Console.WriteLine("\n🏨 Quantos dias serão reservados?");
         int inputDay = Convert.ToInt32(Console.ReadLine());
 
         Reserve reserve = new Reserve(Guid.NewGuid().ToString(), 5, DateTime.Now.ToString("dd/MM/yyyy - HH:mm"));
@@ -73,10 +74,10 @@ try
 
         foreach (var guest in allGuests)
         {
-            Console.WriteLine($"Hóspedes: {guest.FullName} - Reserva {guest.Id}");
+            Console.WriteLine($"👤 Hóspedes: {guest.FullName} - Reserva {guest.Id}");
         }
 
-        Console.WriteLine($"Valor total: {reserve.CalculatePrice(inputDay, suite)}");
+        Console.WriteLine($"💰 Valor total: {reserve.CalculatePrice(inputDay, suite)}");
     }
 
 

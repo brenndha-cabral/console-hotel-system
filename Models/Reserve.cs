@@ -32,11 +32,11 @@ namespace console_hotel_system.Models
                 Id = Guid.NewGuid().ToString();
                 Guests = guests;
                 CheckIn = DateTime.Now.ToString("dd/MM/yyyy - HH:mm");
-                Console.WriteLine($"Nova reserva feita com sucesso!");
+                Console.WriteLine($"\n✅ Suíte {suite.Type} reservada com sucesso! \n");
             }
             else
             {
-                throw new Exception($"A capacidade da suíte {suite.Type} é inferior a capacidade de hospedes informada. Capacidade: {suite.Capacity}");
+                throw new Exception($"\nA capacidade da suíte {suite.Type} é inferior a capacidade de hospedes informada. Capacidade: {suite.Capacity}");
             }
         }
 
@@ -73,19 +73,22 @@ namespace console_hotel_system.Models
             switch (suite.Type)
             {
                 case "Luxury":
-                    Console.WriteLine("Jacuzzi inclusa? (true/false) - Taxa extra diária de R$50,00");
+                    Console.WriteLine("\nJacuzzi inclusa? (true/false) - Taxa extra diária de R$50,00");
                     bool inputHasJacuzzi = Convert.ToBoolean(Console.ReadLine());
 
-                    Console.WriteLine("Café da manhã incluso? (true/false) - Taxa extra diária de R$30,00");
+
+                    Console.WriteLine("\nCafé da manhã incluso? (true/false) - Taxa extra diária de R$30,00");
                     bool inputIncludesBreakfast = Convert.ToBoolean(Console.ReadLine());
 
                     if (inputHasJacuzzi)
                     {
+                        Console.WriteLine("\n🚿 Jacuzzi adicionada à reserva");
                         value += reservedDays * Convert.ToInt32(luxurySuite?.ValueJacuzziDay);
                     }
 
                     if (inputIncludesBreakfast)
                     {
+                        Console.WriteLine("☕ Café da manhã adicionado à reserva");
                         value += reservedDays * Convert.ToInt32(luxurySuite?.ValueBreakfastDay);
                     }
 
