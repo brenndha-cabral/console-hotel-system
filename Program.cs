@@ -53,12 +53,15 @@ try
             break;
     }
 
+    Console.WriteLine("Quantos dias serão reservados?");
+    int inputDay = Convert.ToInt32(Console.ReadLine());
+
     Reserve reserve = new Reserve(Guid.NewGuid().ToString(), 5, DateTime.Now.ToString("dd/MM/yyyy - HH:mm"));
 
     reserve.RegisterReserve(guests, suite);
 
-    Console.WriteLine($"Hóspedes: {reserve.GetAllGuests}");
-    Console.WriteLine($"Valor total: {reserve.CalculatePrice}");
+    // Console.WriteLine($"Hóspedes: {reserve.GetAllGuests()}"); Preciso fazer uma função para percorrer e trazer impresso cada pessoa, fazer isso depois
+    Console.WriteLine($"Valor total: {reserve.CalculatePrice(inputDay, suite)}");
 
 }
 catch (Exception)
