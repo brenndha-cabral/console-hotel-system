@@ -63,6 +63,8 @@ try
                 break;
         }
 
+        if (!hasRunProgram) break;
+
         Console.WriteLine("\n🏨 Quantos dias serão reservados?");
         int inputDay = Convert.ToInt32(Console.ReadLine());
 
