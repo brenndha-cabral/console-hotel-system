@@ -2,6 +2,7 @@
 using console_hotel_system.Models;
 
 List<Guest> guests = new List<Guest>();
+bool hasRunProgram = true;
 
 Guest g1 = new Guest(
     Guid.NewGuid().ToString(),
@@ -33,39 +34,54 @@ guests.Add(g2);
 
 try
 {
-    Console.WriteLine("Qual tipo de Suite você deseja? \nBasic \nLuxury");
-
-    Suite suite = null!;
-
-    string? input = Console.ReadLine();
-
-    switch (input)
+    while (hasRunProgram)
     {
-        case "Basic":
-            suite = new BasicSuite(Guid.NewGuid().ToString());
-            break;
+        Console.WriteLine("⚠️  Bem vindo ao nosso restaurante! ⚠️");
+        Console.WriteLine("Qual tipo de Suite você deseja? \nBasic \nLuxury");
 
-        case "Luxury":
-            suite = new LuxurySuite(Guid.NewGuid().ToString());
-            break;
+        Suite suite = null!;
 
-        default:
-            break;
+        string? input = Console.ReadLine();
+
+        switch (input)
+        {
+            case "Basic":
+                suite = new BasicSuite(Guid.NewGuid().ToString());
+                break;
+
+            case "Luxury":
+                suite = new LuxurySuite(Guid.NewGuid().ToString());
+                break;
+
+            case "Sair":
+                Console.WriteLine("Nosso hotel agradece, volte sempre!");
+                hasRunProgram = false;
+                break;
+
+            default:
+                break;
+        }
+
+        Console.WriteLine("Quantos dias serão reservados?");
+        int inputDay = Convert.ToInt32(Console.ReadLine());
+
+        Reserve reserve = new Reserve(Guid.NewGuid().ToString(), 5, DateTime.Now.ToString("dd/MM/yyyy - HH:mm"));
+
+        reserve.RegisterReserve(guests, suite);
+
+        List<Guest> allGuests = reserve.GetAllGuests();
+
+        foreach (var guest in allGuests)
+        {
+            Console.WriteLine($"Hóspedes: {guest.FullName} - Reserva {guest.Id}");
+        }
+
+        Console.WriteLine($"Valor total: {reserve.CalculatePrice(inputDay, suite)}");
     }
 
-    Console.WriteLine("Quantos dias serão reservados?");
-    int inputDay = Convert.ToInt32(Console.ReadLine());
-
-    Reserve reserve = new Reserve(Guid.NewGuid().ToString(), 5, DateTime.Now.ToString("dd/MM/yyyy - HH:mm"));
-
-    reserve.RegisterReserve(guests, suite);
-
-    // Console.WriteLine($"Hóspedes: {reserve.GetAllGuests()}"); Preciso fazer uma função para percorrer e trazer impresso cada pessoa, fazer isso depois
-    Console.WriteLine($"Valor total: {reserve.CalculatePrice(inputDay, suite)}");
 
 }
 catch (Exception)
 {
-
     throw new Exception("Erro ao rodar o projeto!");
 }

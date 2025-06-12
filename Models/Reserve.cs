@@ -73,7 +73,10 @@ namespace console_hotel_system.Models
             switch (suite.Type)
             {
                 case "Luxury":
+                    Console.WriteLine("Jacuzzi inclusa? (true/false) - Taxa extra diária de R$50,00");
                     bool inputHasJacuzzi = Convert.ToBoolean(Console.ReadLine());
+
+                    Console.WriteLine("Café da manhã incluso? (true/false) - Taxa extra diária de R$30,00");
                     bool inputIncludesBreakfast = Convert.ToBoolean(Console.ReadLine());
 
                     if (inputHasJacuzzi)
