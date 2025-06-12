@@ -37,7 +37,7 @@ try
 
     Suite suite = null!;
 
-    string input = Console.ReadLine();
+    string? input = Console.ReadLine();
 
     switch (input)
     {
