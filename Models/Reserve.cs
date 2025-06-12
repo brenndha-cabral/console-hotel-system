@@ -64,7 +64,7 @@ namespace console_hotel_system.Models
             return Guests.Count;
         }
 
-        public decimal CalculatePrice(int reservedDays, Suite suite)
+        public string CalculatePrice(int reservedDays, Suite suite)
         {
             decimal value = 0;
             LuxurySuite? luxurySuite = suite as LuxurySuite;
@@ -99,10 +99,10 @@ namespace console_hotel_system.Models
 
             if (reservedDays >= 10)
             {
-                return value *= 0.9M; //calcula o valor de 10% de desconto por dentro
+                return (value *= 0.9M).ToString("C", new System.Globalization.CultureInfo("pt-BR")); //calcula o valor de 10% de desconto por dentro
             }
 
-            return value;
+            return value.ToString("C", new System.Globalization.CultureInfo("pt-BR"));
         }
     
     }
