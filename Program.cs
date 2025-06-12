@@ -35,24 +35,34 @@ try
 {
     Console.WriteLine("Qual tipo de Suite você deseja? \nBasic \nLuxury");
 
+    Suite suite = null!;
+
     string input = Console.ReadLine();
-    
+
     switch (input)
     {
         case "Basic":
-            BasicSuite basicSuite = new BasicSuite(Guid.NewGuid().ToString());
+            suite = new BasicSuite(Guid.NewGuid().ToString());
             break;
 
         case "Luxury":
-            LuxurySuite luxurySuite = new LuxurySuite(Guid.NewGuid().ToString());
+            suite = new LuxurySuite(Guid.NewGuid().ToString());
             break;
 
         default:
             break;
     }
+
+    Reserve reserve = new Reserve(Guid.NewGuid().ToString(), 5, DateTime.Now.ToString("dd/MM/yyyy - HH:mm"));
+
+    reserve.RegisterReserve(guests, suite);
+
+    Console.WriteLine($"Hóspedes: {reserve.GetAllGuests}");
+    Console.WriteLine($"Valor total: {reserve.CalculatePrice}");
+
 }
-catch (System.Exception)
+catch (Exception)
 {
-    
-    throw;
+
+    throw new Exception("Erro ao rodar o projeto!");
 }

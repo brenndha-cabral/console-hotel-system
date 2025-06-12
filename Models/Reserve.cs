@@ -32,6 +32,7 @@ namespace console_hotel_system.Models
                 Id = Guid.NewGuid().ToString();
                 Guests = guests;
                 CheckIn = DateTime.Now.ToString("dd/MM/yyyy - HH:mm");
+                Console.WriteLine($"Nova reserva feita com sucesso!");
             }
             else
             {
@@ -91,7 +92,7 @@ namespace console_hotel_system.Models
                 case "Basic":
                     value += reservedDays*Convert.ToInt32(basicSuite?.Price);
                     break;
-                    
+
                 default:
                     throw new Exception("Tipo de suite inválido!");
             }
